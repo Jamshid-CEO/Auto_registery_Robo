@@ -1,16 +1,37 @@
 *** Settings ***
-Documentation    A test suit for vaild login
-Library  SeleniumLibrary
+Documentation    Automate login or account creation on Proliga
+Library          SeleniumLibrary
+
+*** Variables ***
+${URL}            https://proliga.uz/auth
+${USERNAME}       testuser
+${EMAIL}          test@example.com
+${PASSWORD}       Test12345
 
 *** Test Cases ***
-Validate Successful login
-    Open Browser
-    Create Account
+Create And Login Account
+    [Documentation]    Automates account creation and login process on Proliga
+    Open Browser To Login Page
+    Fill Account Creation Form
+    Submit Account Creation Form
+    Validate Successful Login
+    [Teardown]         Close Browser
 
 *** Keywords ***
-Open Browser
-    Create Webdriver Chrome
-    Go To  https://proliga.uz/
+Open Browser To Login Page
+    Open Browser    ${URL}    chrome
+    Maximize Browser Window
 
-Create Account
-    Click Button    css:.border-2 uppercase border-primary transition-all text-center max-w-64 px-5 xs:px-5 py-4 rounded-sm font-bold xl:text-lg w-full -skew-x-12 bg-transparent text-primary hover:bg-primary hover:bg-opacity-55 hover:text-black
+Fill Account Creation Form
+    Wait Until Element Is Visible    xpath=//input[@name="username"]    10s
+    Input Text    xpath=//input[@name="username"]    ${USERNAME}
+    Input Text    xpath=//input[@name="email"]       ${EMAIL}
+    Input Text    xpath=//input[@name="password"]    ${PASSWORD}
+
+Submit Account Creation Form
+    Wait Until Element Is Visible    xpath=//button[contains(text(), 'Create Account')]    10s
+    Click Button    xpath=//button[contains(text(), 'Create Account')]
+    Sleep    3s
+
+Validate Successful Login
+    Wait Until Page Contains    Welcome    10s

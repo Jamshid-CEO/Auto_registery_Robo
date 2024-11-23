@@ -1,26 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.1.1 (Python 3.12.7 on win32)" generated="2024-11-23T17:14:16.146252" rpa="false" schemaversion="5">
+<robot generator="Robot 7.1.1 (Python 3.12.7 on win32)" generated="2024-11-23T17:49:06.406429" rpa="false" schemaversion="5">
 <suite id="s1" name="Test Demo" source="D:\Python projects\Auto registery robot\Auto_registery_Robo\test_demo.robot">
-<test id="s1-t1" name="Validate Successful login" line="6">
-<kw name="Open Browser">
-<kw name="Create Webdriver Chrome">
-<msg time="2024-11-23T17:14:16.329561" level="FAIL">No keyword with name 'Create Webdriver Chrome' found. Did you try using keyword 'SeleniumLibrary.Create Webdriver' and forgot to use enough whitespace between keyword and arguments?</msg>
-<status status="FAIL" start="2024-11-23T17:14:16.329561" elapsed="0.000000">No keyword with name 'Create Webdriver Chrome' found. Did you try using keyword 'SeleniumLibrary.Create Webdriver' and forgot to use enough whitespace between keyword and arguments?</status>
+<test id="s1-t1" name="Create And Login Account" line="12">
+<kw name="Open Browser To Login Page">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-11-23T17:49:06.581637" level="INFO">Opening browser 'chrome' to base url 'https://proliga.uz/auth'.</msg>
+<arg>${URL}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-11-23T17:49:06.580640" elapsed="4.056532"/>
 </kw>
-<kw name="Go To" owner="SeleniumLibrary">
-<arg>https://proliga.uz/</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="NOT RUN" start="2024-11-23T17:14:16.329561" elapsed="0.000000"/>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-11-23T17:49:10.637172" elapsed="0.032611"/>
 </kw>
-<status status="FAIL" start="2024-11-23T17:14:16.327537" elapsed="0.002024">No keyword with name 'Create Webdriver Chrome' found. Did you try using keyword 'SeleniumLibrary.Create Webdriver' and forgot to use enough whitespace between keyword and arguments?</status>
+<status status="PASS" start="2024-11-23T17:49:06.580640" elapsed="4.089143"/>
 </kw>
-<kw name="Create Account">
-<status status="NOT RUN" start="2024-11-23T17:14:16.329561" elapsed="0.000000"/>
+<kw name="Fill Account Creation Form">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<msg time="2024-11-23T17:49:20.833583" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-11-23T17:49:20.833583" level="FAIL">Element 'xpath=//input[@name="username"]' not visible after 10 seconds.</msg>
+<arg>xpath=//input[@name="username"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="FAIL" start="2024-11-23T17:49:10.670780" elapsed="10.163802">Element 'xpath=//input[@name="username"]' not visible after 10 seconds.</status>
 </kw>
-<status status="FAIL" start="2024-11-23T17:14:16.326566" elapsed="0.002995">No keyword with name 'Create Webdriver Chrome' found. Did you try using keyword 'SeleniumLibrary.Create Webdriver' and forgot to use enough whitespace between keyword and arguments?</status>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>xpath=//input[@name="username"]</arg>
+<arg>${USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-11-23T17:49:20.834582" elapsed="0.000000"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>xpath=//input[@name="email"]</arg>
+<arg>${EMAIL}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-11-23T17:49:20.835607" elapsed="0.000000"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>xpath=//input[@name="password"]</arg>
+<arg>${PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-11-23T17:49:20.835607" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2024-11-23T17:49:10.669783" elapsed="10.165824">Element 'xpath=//input[@name="username"]' not visible after 10 seconds.</status>
+</kw>
+<kw name="Submit Account Creation Form">
+<status status="NOT RUN" start="2024-11-23T17:49:20.835607" elapsed="0.000000"/>
+</kw>
+<kw name="Validate Successful Login">
+<status status="NOT RUN" start="2024-11-23T17:49:20.835607" elapsed="0.000000"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-11-23T17:49:20.836577" elapsed="2.136423"/>
+</kw>
+<doc>Automates account creation and login process on Proliga</doc>
+<status status="FAIL" start="2024-11-23T17:49:06.579642" elapsed="16.394354">Element 'xpath=//input[@name="username"]' not visible after 10 seconds.</status>
 </test>
-<doc>A test suit for vaild login</doc>
-<status status="FAIL" start="2024-11-23T17:14:16.147249" elapsed="0.183280"/>
+<doc>Automate login or account creation on Proliga</doc>
+<status status="FAIL" start="2024-11-23T17:49:06.407427" elapsed="16.570040"/>
 </suite>
 <statistics>
 <total>
